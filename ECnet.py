@@ -223,7 +223,7 @@ class ECNet(nn.Module):
         self.coefficient1 = torch.nn.Parameter(torch.Tensor([1 / 3]))
         self.coefficient2 = torch.nn.Parameter(torch.Tensor([1 / 3]))
         self.coefficient3 = torch.nn.Parameter(torch.Tensor([1 / 3]))
-        self.vit = ViT(image_size=5,
+        self.SSAM = ViT(image_size=5,
                        near_band=1,
                        num_patches=128,
                        num_classes=15,
@@ -244,7 +244,7 @@ class ECNet(nn.Module):
 
         x1_tf = x1
 
-        out1 = self.vit(x1_tf.reshape(-1, 32, 25))
+        out1 = self.SSAM(x1_tf.reshape(-1, 32, 25))
 
         x1 = self.conv2(x1)
         x1 = self.BMFM(x1)

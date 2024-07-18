@@ -235,10 +235,10 @@ class ECNet(nn.Module):
                        emb_dropout=0.1,
                        mode='ViT')
         self.BMFM = BMFM(op_channel=FM * 2)
-        self.svd = svd_gather
+        self.FCLR= svd_gather
 
     def forward(self, x1, x2):
-        x1 = self.svd(x1, 102)[0]
+        x1 = self.FCLR(x1, 102)[0]
 
         x1 = self.conv1(x1)
 
